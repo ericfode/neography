@@ -26,7 +26,7 @@ module Neography
     end
 
     def configuration
-      "#{@protocol}#{@server}:#{@port}#{@directory}/db/data"
+      "#{@protocol}#{@username#}:#{@password}@{@server}:#{@port}#{@directory}/db/data"
     end
 
     def merge_options(options)
@@ -101,7 +101,8 @@ module Neography
       @log_enabled    = config[:log_enabled]
       @max_threads    = config[:max_threads]
       @parser         = config[:parser]
-
+      @password       = config[:password]
+      @username       = config[:username]
       @user_agent     = { "User-Agent" => USER_AGENT }
 
       @authentication = {}

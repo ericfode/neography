@@ -11,7 +11,7 @@ module Neography
       end
 
       def execute(*args)
-        batch({'Accept' => 'application/json;stream=true'}, *args)
+        batch({}, *args)
       end
 
       def not_streaming(*args)

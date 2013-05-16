@@ -50,7 +50,7 @@ module Neography
       authenticate(configuration + '/batch')
       result = ""
       puts batchConfig
-      response = @client.post(batchConfig + path, merge_options(options)[:body], merge_options(options)[:headers]) do |chunk|
+      response = @client.post(configuration + path, merge_options(options)[:body], merge_options(options)[:headers]) do |chunk|
         result << chunk
       end
       puts options.inspect

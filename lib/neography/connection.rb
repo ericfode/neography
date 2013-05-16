@@ -54,11 +54,14 @@ module Neography
       end
 
       r = evaluate_chunk_response(response, result)
-
-      if r.last["status"] > 399
-        handle_4xx_500_response(r.last["status"], r.last["body"] || r.last )
+      puts r
+      begin
+        if r.last["status"] > 399
+          handle_4xx_500_response(r.last["status"], r.last["body"] || r.last )
+        end
+      rescue
+        puts "odd things happened"
       end
-      
       r
     end
 

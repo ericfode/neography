@@ -31,7 +31,8 @@ module Neography
     
     def batchConfig
       "#{@protocol}#{@username}:#{@password}@#{@server}:{@port}#{@directory}/db/data"
-
+    end
+  
     def merge_options(options)
       merged_options = options.merge!(@authentication)#.merge!(@parser)
       merged_options[:headers].merge!(@user_agent) if merged_options[:headers]

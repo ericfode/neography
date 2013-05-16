@@ -30,7 +30,7 @@ module Neography
     end
     
     def batchConfig
-      "#{@protocol}#{@username}:#{@password}@#{@server}:{@port}#{@directory}/db/data"
+      "#{@protocol}#{@username}:#{@password}@#{@server}:#{@port}#{@directory}/db/data"
     end
   
     def merge_options(options)

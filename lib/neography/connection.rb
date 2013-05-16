@@ -26,8 +26,11 @@ module Neography
     end
 
     def configuration
-      "#{@protocol}#{@username}:#{@password}@#{@server}:#{@port}#{@directory}/db/data"
+      "#{@protocol}#{@server}:#{@port}#{@directory}/db/data"
     end
+    
+    def batchConfig
+      "#{@protocol}#{@username}:#{@password}@#{@server}:{@port}#{@directory}/db/data"
 
     def merge_options(options)
       merged_options = options.merge!(@authentication)#.merge!(@parser)
@@ -46,10 +49,9 @@ module Neography
     end
 
     def post_chunked(path, options={})
-      authenticate(configuration + path)
       result = ""
-
-      response = @client.post(configuration + path, merge_options(options)[:body], merge_options(options)[:headers]) do |chunk|
+      puts batchConfig
+      response = @client.post(batchConfig + path, merge_options(options)[:body], merge_options(options)[:headers]) do |chunk|
         result << chunk
       end
       puts options.inspect

@@ -52,7 +52,8 @@ module Neography
       response = @client.post(configuration + path, merge_options(options)[:body], merge_options(options)[:headers]) do |chunk|
         result << chunk
       end
-
+      puts options.inspect
+      
       r = evaluate_chunk_response(response, result)
       puts r
       begin

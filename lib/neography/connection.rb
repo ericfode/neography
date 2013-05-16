@@ -49,7 +49,7 @@ module Neography
     def post_chunked(path, options={})
       authenticate(configuration + '/batch')
       result = ""
-      puts batchConfig
+     
       response = @client.post(configuration + path, merge_options(options)[:body], merge_options(options)[:headers]) do |chunk|
         result << chunk
       end
